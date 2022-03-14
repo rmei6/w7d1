@@ -34,6 +34,9 @@ class User < ApplicationRecord
     password_object.is_password?(password)
   end
 
-
+  has_many :cats,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Cat
 
 end
