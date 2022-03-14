@@ -9,6 +9,19 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+        <h2><%= current_user.user_name %> </h2>
+        <form action="<%= session_url %>" method="post">
+          <input type="hidden" name = "_method" value="delete">
+          <input type="submit" value="Logout">
+        </form>
+    <% else %>
+      <!--<form action= "<%= new_session_url %>" method="get">
+        <input type="submit" value="Login">
+      </form>-->
+      <a href="<%= new_session_url %>">Login</a>
+    <% end %>
     <%= yield %>
+
   </body>
 </html>
